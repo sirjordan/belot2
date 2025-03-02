@@ -1,15 +1,18 @@
 ﻿
 using Belot;
 
-var deck = new Deck();
-var clubsMode = new Mode().SetTrump().AsColor(Color.Clubs);
-var diamondsMode = new Mode().SetTrump().AsColor(Color.Diamonds);
-var heartsMode = new Mode().SetTrump().AsColor(Color.Hearts);
-var spadesMode = new Mode().SetTrump().AsColor(Color.Spades);
-var noMode = new Mode().SetTrump().AsNo();
-var allMode = new Mode().SetTrump().AsAll();
+var p1 = new Player("John");
+var p2 = new Player("Beth");
+var p3 = new Player("Ann");
+var p4 = new Player("Roger");
+var teamA = new Team(p1, p2);
+var teamB = new Team(p3, p4);
 
-foreach (var card in deck.Cards)
-{
-	Console.WriteLine($"{card.Number.Name} {card.Color.Name} | {card.Score(noMode)}");
-}
+var deck = new Deck();
+var table = new Table(teamA, teamB, deck);
+
+table.DrawInit();
+table.DrawAfter();
+
+Console.WriteLine();
+

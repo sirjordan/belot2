@@ -6,16 +6,24 @@
 
         public Deck()
         {
-            var allCards = GetAllCards();
-            Cards = new(ShuffleCards(allCards));
+            var allCards = CreateCards();
+			Cards = new Stack<Card>(Shuffle(allCards));
         }
 
-        private IEnumerable<Card> ShuffleCards(IEnumerable<Card> cards)
+        public IEnumerable<Card> Draw(int num)
+        {
+            for (int i = 0; i < num; i++)
+            {
+                yield return Cards.Pop();
+			}
+		}
+
+        private IEnumerable<Card> Shuffle(IEnumerable<Card> cards)
         {
             return cards.OrderBy(_ => Guid.NewGuid());
         }
 
-        private IEnumerable<Card> GetAllCards()
+        private IEnumerable<Card> CreateCards()
         {
             foreach (var color in Color.All)
             {

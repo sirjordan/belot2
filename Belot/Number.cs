@@ -9,10 +9,11 @@
 		public string Name { get; private set; }
 		public Value Value { get; private set; }
 
-		protected Number(int count, string name, Value value)
+		protected Number(int order, string name, Value value)
 		{
-			if (count < MIN || count > MAX) { throw new ArgumentOutOfRangeException($"Num must be between {MIN} and {MAX}"); }
+			if (order < MIN || order > MAX) { throw new ArgumentOutOfRangeException($"Num must be between {MIN} and {MAX}"); }
 
+			Order = order;
 			Name = name;
 			Value = value;
 		}
