@@ -15,10 +15,33 @@ table.DrawInit();
 
 foreach (var p in table.Players)
 {
-	// Vote
+	// Vote for trump :)
+	// Take input from every p
 }
 
+table.SetTrump(p1).AsColor(Color.Diamonds);
+// p2 passes
+table.SetTrump(p3).AsColor(Color.Hearts);
+table.SetTrump(p4).AsAll();
+
 table.DrawAfter();
+
+Console.WriteLine($"Mode: {table.Mode.Trump} @ {table.Voter.Name}");
+Console.WriteLine("-----------");
+Console.WriteLine();
+
+foreach (var p in table.Players)
+{
+
+	Console.WriteLine($"{p.Name}:");
+	Console.WriteLine("-----------");
+	foreach (var c in p.Cards)
+	{
+		Console.Write($"{c.Number.Name} {c.Color.Name} |");
+	}
+	Console.WriteLine();
+	Console.WriteLine();
+}
 
 Console.WriteLine();
 

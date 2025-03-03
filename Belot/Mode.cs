@@ -69,7 +69,7 @@
 				return Verify(_changed);
 			}
 
-			public Mode Verify(Mode m)
+			private Mode Verify(Mode m)
 			{
 				if (_changed > _original)
 				{
@@ -80,7 +80,7 @@
 				}
 				else
 				{
-					throw new InvalidOperationException();
+					throw new InvalidOperationException("Changing mode can be UP only");
 				}
 			}
 		}
