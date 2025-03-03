@@ -12,6 +12,12 @@ var deck = new Deck();
 var table = new Table(teamA, teamB, deck);
 
 table.DrawInit();
+
+foreach (var p in table.Players)
+{
+	// Vote
+}
+
 table.DrawAfter();
 
 Console.WriteLine();

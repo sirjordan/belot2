@@ -1,7 +1,7 @@
 ﻿namespace Belot.Tests
 {
 	[TestClass]
-	public sealed class DrawingTests
+	public sealed class TableTests
 	{
 		[TestMethod]
 		public void Correct_Count()

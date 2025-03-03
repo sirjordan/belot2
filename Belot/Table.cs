@@ -5,6 +5,8 @@
 		private Deck _deck;
 		private Team _leftRight;
 		private Team _topBottom;
+		private Mode _mode;
+		private Player _voter;
 
 		public IReadOnlyCollection<Player> Players => [_leftRight.Players.Item1, _topBottom.Players.Item1, _leftRight.Players.Item2, _topBottom.Players.Item2];
 
@@ -19,6 +21,11 @@
 		{
 			DrawCards(3);
 			DrawCards(2);
+		}
+
+		public void Vote(Player p, Mode mode)
+		{
+
 		}
 
 		public void DrawAfter()

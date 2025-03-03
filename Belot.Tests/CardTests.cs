@@ -1,7 +1,7 @@
 ﻿namespace Belot.Tests
 {
 	[TestClass]
-	public sealed class CardScoreTests
+	public sealed class CardTests
 	{
 		[TestMethod]
 		public void Correct_Score_On_No_Trump()
