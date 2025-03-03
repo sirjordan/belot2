@@ -26,22 +26,8 @@ table.SetTrump(p4).AsAll();
 
 table.DrawAfter();
 
-Console.WriteLine($"Mode: {table.Mode.Trump} @ {table.Voter.Name}");
-Console.WriteLine("-----------");
-Console.WriteLine();
+// Play
 
-foreach (var p in table.Players)
-{
-
-	Console.WriteLine($"{p.Name}:");
-	Console.WriteLine("-----------");
-	foreach (var c in p.Cards)
-	{
-		Console.Write($"{c.Number.Name} {c.Color.Name} |");
-	}
-	Console.WriteLine();
-	Console.WriteLine();
-}
 
 Console.WriteLine();
 

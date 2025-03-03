@@ -49,7 +49,45 @@
 			table.DrawAfter();
 
 			Assert.AreEqual(Trump.All, table.Mode.Trump);
+			Assert.IsNotNull(table.Voter);
 			Assert.AreEqual(p4.Name, table.Voter.Name);
+		}
+
+		[TestMethod]
+		public void Next_Player()
+		{
+			/*             Beth (3dr)
+			 * Ann (2nd)                 Roger(4th)  
+			 *             John (1st)
+			 */
+
+			var p1 = new Player("John");
+			var p2 = new Player("Beth");
+			var p3 = new Player("Ann");
+			var p4 = new Player("Roger");
+			var teamA = new Team(p1, p2);
+			var teamB = new Team(p3, p4);
+
+			var deck = new Deck();
+			var table = new Table(teamA, teamB, deck);
+
+			Assert.IsNull(table.CurrentPlayer);
+
+			table.NextPlayer();
+			Assert.IsNotNull(table.CurrentPlayer);
+			Assert.AreEqual(p1.Name, table.CurrentPlayer.Name);
+
+			table.NextPlayer();
+			Assert.AreEqual(p3.Name, table.CurrentPlayer.Name);
+
+			table.NextPlayer();
+			Assert.AreEqual(p2.Name, table.CurrentPlayer.Name);
+
+			table.NextPlayer();
+			Assert.AreEqual(p4.Name, table.CurrentPlayer.Name);
+
+			table.NextPlayer();
+			Assert.AreEqual(p1.Name, table.CurrentPlayer.Name);
 		}
 	}
 }
