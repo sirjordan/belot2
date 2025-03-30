@@ -2,12 +2,15 @@
 
 namespace Belot
 {
+	
+
 	public class Table
 	{
 		private Deck _deck;
 		private Team _leftRight;
 		private Team _topBottom;
 		private Queue<Player> _players;
+		private TableSetup _tableSetup;
 
 		public Player? CurrentPlayer { get; private set; }
 		public Mode Mode { get; private set; }
@@ -20,19 +23,24 @@ namespace Belot
 			_leftRight = leftRight;
 			_topBottom = topBottom;
 			_players = new Queue<Player>([leftRight.Players.Item1, topBottom.Players.Item1, leftRight.Players.Item2, topBottom.Players.Item2]);
-			CurrentPlayer = null;
+			_tableSetup = new TableSetup();
+			_tableSetup.Init();
+
 			Mode = new Mode();
+			CurrentPlayer = null;
 		}
 
 		public void DrawInit()
 		{
-			// check if game is initial
+			_tableSetup.DrawInit();
 			DrawCards(3);
 			DrawCards(2);
+
 		}
 
 		public TrumpSetup SetTrump(Player p)
 		{
+			_tableSetup.SetTrump();
 			Voter = p;
 
 			return Mode.SetTrump();
@@ -40,15 +48,14 @@ namespace Belot
 
 		public void DrawAfter()
 		{
-			// check if there is trump 
+			_tableSetup.DrawAfter();
 			DrawCards(3);
 		}
 
 		public void GameStart()
 		{
-			// check if there is trump 
-			// check if all cards are drawn
-			// reset queue and current player
+			_tableSetup.GameStart();
+			// TODO: reset queue and current player
 		}
 
 		public Player NextPlayer()
