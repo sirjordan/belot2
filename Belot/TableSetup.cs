@@ -1,7 +1,6 @@
 ﻿namespace Belot
 {
-	// TODO: Unit test this
-	internal class TableSetup
+	public class TableSetup
 	{
 		public bool IsInit { get; private set; }
 		public bool IsDrawnInit { get; private set; }

@@ -17,6 +17,7 @@
 			var table = new Table(teamA, teamB, deck);
 
 			table.DrawInit();
+			table.SetTrump(p1).AsNo();
 			table.DrawAfter();
 
 			Assert.AreEqual(0, deck.Cards.Count);
@@ -88,6 +89,47 @@
 
 			table.NextPlayer();
 			Assert.AreEqual(p1.Name, table.CurrentPlayer.Name);
+		}
+
+		[TestMethod]
+		public void TableSetup_All_Is_Set_Correctly()
+		{
+			var setup = new TableSetup();
+			Assert.IsFalse(setup.IsInit);
+			setup.Init();
+			Assert.IsTrue(setup.IsInit);
+
+			Assert.IsFalse(setup.IsDrawnInit);
+			setup.DrawInit();
+			Assert.IsTrue(setup.IsDrawnInit);
+
+			Assert.IsFalse(setup.IsTrumpSet);
+			setup.SetTrump();
+			Assert.IsTrue(setup.IsTrumpSet);
+
+			Assert.IsFalse(setup.IsDrawnAfter);
+			setup.DrawAfter();
+			Assert.IsTrue(setup.IsDrawnAfter);
+
+			Assert.IsFalse(setup.IsGameStarted);
+			setup.GameStart();
+			Assert.IsTrue(setup.IsGameStarted);
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(InvalidOperationException))]
+		public void TableSetup_Draw_But_Init_Not_Set()
+		{
+			var setup = new TableSetup();
+			setup.DrawInit();
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(InvalidOperationException))]
+		public void TableSetup_GameStart_But_SetTrump_Not_Set()
+		{
+			var setup = new TableSetup();
+			setup.GameStart();
 		}
 	}
 }

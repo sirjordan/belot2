@@ -15,8 +15,7 @@ namespace Belot
 		public Player? CurrentPlayer { get; private set; }
 		public Mode Mode { get; private set; }
 		public Player? Voter { get; private set; }
-		public IReadOnlyCollection<Player> Players => _players;
-
+		
 		public Table(Team leftRight, Team topBottom, Deck deck)
 		{
 			_deck = deck;
@@ -78,7 +77,7 @@ namespace Belot
 
 		private void DrawCards(int num)
 		{
-			foreach (var p in Players)
+			foreach (var p in _players)
 			{
 				p.Cards.AddRange(_deck.Draw(num));
 			}

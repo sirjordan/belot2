@@ -13,14 +13,15 @@ var table = new Table(teamA, teamB, deck);
 
 table.DrawInit();
 
-foreach (var p in table.Players)
-{
-	// Vote for trump :)
-	// Take input from every p
-}
+// TODO: Should use NextPlayer()
+//foreach (var p in table.Players)
+//{
+//	// Vote for trump :)
+//	// Take input from every p
+//}
 
 table.SetTrump(p1).AsColor(Color.Diamonds);
-// p2 passes
+// p2 passes TODO: Maybe SetTrump().AsPass() to anotate it passes ?
 table.SetTrump(p3).AsColor(Color.Hearts);
 table.SetTrump(p4).AsAll();
 
@@ -28,6 +29,4 @@ table.DrawAfter();
 
 // Play
 
-
 Console.WriteLine();
-
